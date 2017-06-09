@@ -8,6 +8,35 @@ ___
 
 Bleat (Bluetooth Low Energy Abstraction Tool) provides a simplified BLE layer which uses adapters to abstract the usage of BLE in JavaScript on different platforms.
 
+## Modification from the original repo thegecko/bleat
+
+The original code didnt return the raw manufacturer bytes for each discovered device. This repo makes the change that those raw bytes are also provided.
+The modified Bluetooth device has an extra field raw_bytes  in it as show below:
+```
+    // BluetoothDevice Object
+    var BluetoothDevice = function(properties) {
+        this._handle = null;
+        this._allowedServices = [];
+
+        this.id = "unknown"; 
+        this.name = null;
+        this.adData = {
+            appearance: null,
+            txPower: null,
+            rssi: null,
+            manufacturerData: new Map(),
+            serviceData: new Map(),
+            manufacturerDataRawBytes: new Uint8Array()  // added field to hold the raw bytes for the manufacturer data field in the advertisement packet
+        };
+        this.gatt = new BluetoothRemoteGATTServer();
+        this.gatt.device = this;
+        this.uuids = [];
+
+        mergeDictionary(this, properties);
+    };
+```
+
+
 ## APIs
 
 Bleat has 2 APIs:
