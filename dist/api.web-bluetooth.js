@@ -238,7 +238,8 @@
             txPower: null,
             rssi: null,
             manufacturerData: new Map(),
-            serviceData: new Map()
+            serviceData: new Map(),
+            manufacturerDataRawBytes: new Uint8Array()
         };
         this.gatt = new BluetoothRemoteGATTServer();
         this.gatt.device = this;

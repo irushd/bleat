@@ -115,7 +115,8 @@
                                 manufacturerData: manufacturerData,
                                 serviceData: serviceData,
                                 txPower: deviceInfo.advertisement.txPowerLevel,
-                                rssi: deviceInfo.rssi
+                                rssi: deviceInfo.rssi,
+                                manufacturerDataRawBytes: deviceInfo.advertisement.manufacturerData
                             }
                         });
                     }
